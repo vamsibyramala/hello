@@ -1,4 +1,5 @@
-FROM Ubuntu
-RUN yum install httpd
-RUN systemctl start httpd
-COPY /var/lib/jenkins/workspace/mymaven/index.html /var/www/html/index.html
+FROM openjdk:11-jre-slim
+
+COPY my-app.jar /app/my-app.jar
+
+CMD ["java", "-jar", "/app/my-app.jar"]
